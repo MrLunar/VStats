@@ -35,22 +35,22 @@ zend_function_entry vstats_functions[] = {
   PHP_FE(vstats_enabled,	NULL)
   PHP_FE(vstats_send,	NULL)
   PHP_FE(vstats_set_prefix,	NULL)
-	{NULL, NULL, NULL}
+  {NULL, NULL, NULL}
 };
 
 /* Module Details */
 zend_module_entry vstats_module_entry = {
-	STANDARD_MODULE_HEADER,
-	"vstats",
-	vstats_functions,
-	PHP_MINIT(vstats),
-	PHP_MSHUTDOWN(vstats),
-	PHP_RINIT(vstats),
-	PHP_RSHUTDOWN(vstats),
-	PHP_MINFO(vstats),
+  STANDARD_MODULE_HEADER,
+  "vstats",
+  vstats_functions,
+  PHP_MINIT(vstats),
+  PHP_MSHUTDOWN(vstats),
+  PHP_RINIT(vstats),
+  PHP_RSHUTDOWN(vstats),
+  PHP_MINFO(vstats),
   NO_VERSION_YET,
   PHP_MODULE_GLOBALS(vstats),
-	STANDARD_MODULE_PROPERTIES_EX
+  STANDARD_MODULE_PROPERTIES_EX
 };
 
 #ifdef COMPILE_DL_VSTATS
@@ -99,14 +99,14 @@ PHP_MINIT_FUNCTION(vstats)
   remote->sin_port = htons(VSTATS_SOCKET_PORT);
 
   *vstats_enabled = TRUE;
-	return SUCCESS;
+  return SUCCESS;
 }
 
 PHP_MSHUTDOWN_FUNCTION(vstats)
 {
   UNREGISTER_INI_ENTRIES( );
 
-	return SUCCESS;
+  return SUCCESS;
 }
 
 /**
@@ -128,11 +128,11 @@ PHP_RINIT_FUNCTION(vstats)
   // Request UUID
   char buf[37];
   uuid_t out;
-	uuid_generate(out);
-	uuid_unparse_lower(out, buf);
+  uuid_generate(out);
+  uuid_unparse_lower(out, buf);
   VSTATS_G(request_uuid) = estrdup(buf);
 
-	return SUCCESS;
+  return SUCCESS;
 }
 
 /**
@@ -175,7 +175,7 @@ PHP_RSHUTDOWN_FUNCTION(vstats)
   efree(VSTATS_G(default_prefix));
   efree(VSTATS_G(request_uuid));
 
-	return SUCCESS;
+  return SUCCESS;
 }
 
 /**
@@ -183,9 +183,9 @@ PHP_RSHUTDOWN_FUNCTION(vstats)
  */
 PHP_MINFO_FUNCTION(vstats)
 {
-	php_info_print_table_start();
-	php_info_print_table_row(2, "vstats support", VSTATS_G(vstats_enabled) == TRUE ? "enabled" : "disabled");
-	php_info_print_table_end();
+  php_info_print_table_start();
+  php_info_print_table_row(2, "vstats support", VSTATS_G(vstats_enabled) == TRUE ? "enabled" : "disabled");
+  php_info_print_table_end();
 
   DISPLAY_INI_ENTRIES();
 }

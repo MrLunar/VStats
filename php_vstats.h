@@ -52,7 +52,7 @@ ZEND_BEGIN_MODULE_GLOBALS(vstats)
   // Other
   int vstats_enabled;
   long socket_fd;
-	struct sockaddr_in remote;
+  struct sockaddr_in remote;
   char *request_uuid;
   struct timeval request_start_time;
 ZEND_END_MODULE_GLOBALS(vstats)
