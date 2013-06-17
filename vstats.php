@@ -1,9 +1,9 @@
 <?php
 
-vstats_set_prefix("dev01-01", true);
+//vstats_set_prefix("dev01-01", true);
 //ini_set("vstats.send_request_uuid", false);
 //ini_set("vstats.send_request_peak_mem_usage", false);
-ini_set("vstats.send_request_time", true);
+//ini_set("vstats.send_request_time", true);
 
 $array = array();
 $rand_num = rand(100, 50000);

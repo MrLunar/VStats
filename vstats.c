@@ -118,7 +118,7 @@ PHP_RINIT_FUNCTION(vstats)
 
   if (strlen(INI_STR("vstats.default_prefix")) > 0)
   {
-    VSTATS_G(default_prefix) = estrdup(VSTATS_G(default_prefix)); // if changed to realloc, remember to include 1 extra for nul-termination
+    VSTATS_G(default_prefix) = estrdup(INI_STR("vstats.default_prefix")); // if changed to realloc, remember to include 1 extra for nul-termination
   }
   else
   {
