@@ -162,7 +162,7 @@ PHP_RSHUTDOWN_FUNCTION(vstats)
     long long request_time = ((request_end_time.tv_sec-VSTATS_G(request_start_time).tv_sec)*1000000LL)
                            + request_end_time.tv_usec-VSTATS_G(request_start_time).tv_usec;
 
-    add_assoc_long(stats_data, "request_time", request_time);
+    add_assoc_long(stats_data, "request_time_usec", request_time);
     send_shutdown_stats = TRUE;
   }
 
